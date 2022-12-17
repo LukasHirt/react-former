@@ -20,6 +20,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
       - id: install-deps
         name: Install dependencies
         run: pnpm install
