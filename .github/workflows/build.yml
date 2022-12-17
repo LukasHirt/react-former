@@ -1,0 +1,39 @@
+name: Build, test & deploy application
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - id: install-deps
+        name: Install dependencies
+        run: pnpm install
+
+      - id: lint
+        name: Lint
+        run: pnpm run lint
+
+      - id: build
+        name: Build
+        run: pnpm run build
+
+      - id: deploy
+        name: Deploy to GitHub Pages
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        uses: actions/deploy-pages@v1
+        
