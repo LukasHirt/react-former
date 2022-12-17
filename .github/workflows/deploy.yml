@@ -29,6 +29,8 @@ jobs:
 
       - id: build
         name: Build
+        env:
+          ASSETS_DIR: ./veeam-homework/assets
         run: pnpm run build
 
       - id: upload-artifact
