@@ -1,1 +1,2 @@
-export { default as TabConfig } from './tab-config'
+export { default as TabConfig } from './config'
+export { default as TabResult } from './result'

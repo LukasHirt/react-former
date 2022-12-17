@@ -1,6 +1,6 @@
 import { Tabs, Tab } from './components/common'
 import { Container } from './components/layout'
-import { TabConfig } from './components/tabs'
+import { TabConfig, TabResult } from './components/tabs'
 import { FormConfigProvider } from './context/form-config'
 
 const App: React.FC = () => {
@@ -10,6 +10,9 @@ const App: React.FC = () => {
         <Tabs>
           <Tab name="config" title="Config">
             <TabConfig />
+          </Tab>
+          <Tab name="result" title="Result">
+            <TabResult />
           </Tab>
         </Tabs>
       </Container>

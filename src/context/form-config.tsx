@@ -1,27 +1,8 @@
 import { createContext, useEffect, useState } from 'react'
-
-interface FormItem {
-  type:
-    | 'text'
-    | 'number'
-    | 'file'
-    | 'checkbox'
-    | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'month'
-    | 'password'
-    | 'radio'
-    | 'search'
-    | 'tel'
-    | 'time'
-    | 'url'
-    | 'week'
-    | 'range'
-}
+import { FormItem } from 'src/types/form'
 
 interface FormConfig {
+  title?: string
   theme?: 'light' | 'dark'
   items: FormItem[]
 }
@@ -35,13 +16,15 @@ interface FormConfigContextProvider {
   children: React.ReactNode
 }
 
+const defaultValues: FormConfig = { title: '', theme: 'light', items: [] }
+
 export const FormConfigContext = createContext<FormConfigContextInterface>({
-  formConfig: { items: [] },
+  formConfig: defaultValues,
   setFormConfig: () => undefined
 })
 
 export const FormConfigProvider: React.FC<FormConfigContextProvider> = ({ children }) => {
-  const [formConfig, setFormConfig] = useState<FormConfig>({ items: [] })
+  const [formConfig, setFormConfig] = useState<FormConfig>(defaultValues)
 
   useEffect(() => {
     console.log(formConfig)
