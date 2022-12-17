@@ -34,11 +34,4 @@ jobs:
       - id: build
         name: Build
         run: pnpm run build
-
-      - id: upload-artifact
-        name: Upload artifact
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: ./dist
         
