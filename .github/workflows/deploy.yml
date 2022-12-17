@@ -8,6 +8,7 @@ on:
 
 jobs:
   build:
+    name: build
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +39,10 @@ jobs:
           path: ./dist
 
   deploy:
+    name: deploy
     runs-on: ubuntu-latest
+    needs:
+      - build
 
     permissions:
       pages: write
