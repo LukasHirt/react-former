@@ -1,0 +1,19 @@
+.tabsNav {
+  display: flex;
+}
+
+.tabsNav .tabLink:first-child {
+  border-top-left-radius: 0.25rem;
+}
+
+.tabsNav .tabLink:last-child {
+  border-top-right-radius: 0.25rem;
+}
+
+.tabLink {
+  background-color: transparent;
+  border: 1px solid rgb(55, 65, 81);
+  border-bottom: 0;
+  font-size: 1rem;
+  padding: 0.25rem 0.5rem;
+}
