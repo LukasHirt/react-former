@@ -1,4 +1,4 @@
-name: Build, test & deploy application
+name: Build & test
 on:
   push:
     branches:
@@ -10,14 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      pages: write
-      id-token: write
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - uses: actions/checkout@v3
@@ -43,8 +35,10 @@ jobs:
         name: Build
         run: pnpm run build
 
-      - id: deploy
-        name: Deploy to GitHub Pages
+      - id: upload-artifact
+        name: Upload artifact
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        uses: actions/deploy-pages@v1
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
         
