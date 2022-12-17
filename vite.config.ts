@@ -9,8 +9,5 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@context': path.resolve(__dirname, './src/context')
     }
-  },
-  build: {
-    assetsDir: process.env.ASSETS_DIR || './assets'
   }
 })
