@@ -55,12 +55,12 @@ const TabConfig: React.FC = () => {
   useEffect(() => {
     if (textareaRef.current === null) return
 
-    const formatter = bindJsonFormatterToTextarea(textareaRef.current)
+    const { removeListener } = bindJsonFormatterToTextarea(textareaRef.current)
 
     return function cleanup() {
       if (textareaRef.current === null) return
 
-      formatter.removeListener()
+      removeListener()
     }
   }, [textareaRef])
 
