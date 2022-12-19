@@ -8,6 +8,7 @@ body .theme-light {
   --bg-dark-mode-switch: hsla(253, 21%, 8%, 0.4);
   --bg-form: hsl(0, 0%, 100%);
   --bg-input: hsl(0, 0%, 100%);
+  --input-accent: hsl(253, 21%, 8%);
   --input-border-color: hsl(0, 0%, 77%);
   --btn-bg-color-primary: hsl(42, 100%, 64%);
   --btn-bg-color-primary-hover: hsl(253, 21%, 8%);
@@ -29,6 +30,7 @@ body .theme-dark {
   --bg-dark-mode-switch: hsl(240, 4%, 16%);
   --bg-form: hsl(253, 21%, 8%);
   --bg-input: hsla(253, 21%, 8%, 0.8);
+  --input-accent: hsl(0, 0%, 100%);
   --input-border-color: hsl(0, 0%, 33%);
   --btn-bg-color-primary-hover: hsl(0, 0%, 98%);
   --btn-text-color-primary-hover: hsl(253, 21%, 8%);
