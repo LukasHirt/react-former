@@ -76,7 +76,7 @@ const TabConfig: React.FC<TabConfigProps> = ({ onSave }) => {
           ref={textareaRef}
           label="Form JSON"
           className="w-full block"
-          defaultValue={JSON.stringify(formConfig, null, 2)}
+          defaultValue={JSON.stringify(formConfig, null, '\t')}
           rows={40}
           srOnlyLabel
         />
