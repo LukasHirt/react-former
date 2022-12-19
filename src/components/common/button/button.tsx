@@ -3,7 +3,7 @@ import styles from './button.module.css'
 
 interface ButtonProps {
   children: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'outline'
+  variant?: 'primary' | 'secondary'
   type?: 'button' | 'submit' | 'reset'
   disabled?: boolean
   className?: string
@@ -14,11 +14,17 @@ const Button: React.FC<ButtonProps> = ({
   children,
   type = 'button',
   disabled = false,
-  variant = 'outline',
-  className
+  variant = 'secondary',
+  className,
+  onClick = () => undefined
 }) => {
   return (
-    <button className={cn([styles.button, styles[variant], className])} type={type} disabled={disabled}>
+    <button
+      className={cn([styles.button, styles[variant === 'primary' ? 'primary' : 'secondary'], className])}
+      type={type}
+      disabled={disabled}
+      onClick={onClick}
+    >
       {children}
     </button>
   )

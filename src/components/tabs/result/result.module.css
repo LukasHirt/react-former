@@ -1,2 +1,32 @@
+.tab {
+  background-color: var(--bg-form);
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+
 .formButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.noItemsMsg {
+  color: var(--text-color-app);
+  font-size: 1rem;
+}
+
+.formTitle {
+  color: var(--text-color-app);
+}
+
+@media screen and (min-width: 640px) {
+  .formButtons {
+    justify-content: flex-end;
+  }
 }
