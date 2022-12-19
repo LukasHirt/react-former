@@ -1,3 +1,6 @@
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 import { Tabs, Tab } from './components/common'
 import { Container } from './components/layout'
 import { TabConfig, TabResult } from './components/tabs'
@@ -16,6 +19,7 @@ const App: React.FC = () => {
           </Tab>
         </Tabs>
       </Container>
+      <ToastContainer />
     </FormConfigProvider>
   )
 }
