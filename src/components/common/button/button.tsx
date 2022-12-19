@@ -16,7 +16,8 @@ const Button: React.FC<ButtonProps> = ({
   disabled = false,
   variant = 'secondary',
   className,
-  onClick = () => undefined
+  onClick = () => undefined,
+  ...rest
 }) => {
   return (
     <button
@@ -24,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({
       type={type}
       disabled={disabled}
       onClick={onClick}
+      {...rest}
     >
       {children}
     </button>

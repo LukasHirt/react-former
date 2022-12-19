@@ -23,8 +23,14 @@
       "@constants/*": ["src/constants/*"],
       "@icons/*": ["src/components/icons/*"]
     },
+    "types": [
+      "vite/client",
+      "vitest/globals",
+      "@testing-library/jest-dom",
+      "@types/testing-library__jest-dom"
+    ]
   },
-  "include": ["src"],
+  "include": ["src", "tests"],
   "references": [{ "path": "./tsconfig.node.json" }],
   "exclude": ["node_modules"]
 }
