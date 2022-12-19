@@ -11,11 +11,16 @@
 }
 
 .primary {
-  background-color: hsl(275, 100%, 25%);
+  background-color: var(--btn-bg-color-primary);
   border: 0;
   color: #fff;
 }
 
 .primary:hover {
-  background-color: hsl(275, 100%, 20%);
+  background-color: var(--btn-bg-color-primary-hover);
+}
+
+.primary[disabled] {
+  background-color: var(--btn-bg-color-primary-disabled);
+  pointer-events: none;
 }
