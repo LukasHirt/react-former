@@ -27,7 +27,7 @@
 
 .input[type='radio'],
 .input[type='checkbox'] {
-  accent-color: var(--bg-input);
+  accent-color: var(--input-accent);
 }
 
 :global(body.dark) .input[type='date'],
@@ -74,10 +74,5 @@
 
   .label {
     padding-top: 0.625rem;
-  }
-
-  .input[type='radio'],
-  .input[type='checkbox'] {
-    accent-color: var(--bg-input);
   }
 }
