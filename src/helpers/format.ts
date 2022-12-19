@@ -23,6 +23,8 @@ export const bindJsonFormatterToTextarea = (textarea: HTMLTextAreaElement & { _l
 
     if (remove !== '\t') {
       setValue(before + '}' + after)
+      textarea.selectionStart = textarea.selectionEnd = before.length + 1
+
       return
     }
 
