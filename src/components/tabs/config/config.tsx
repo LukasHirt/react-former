@@ -1,9 +1,10 @@
-import { useCallback, useContext, useRef } from 'react'
+import { useCallback, useContext, useEffect, useRef } from 'react'
 
 import { FormConfigContext } from '@context/form-config'
 
 import { Button } from '@components/common'
 import { Textarea } from '@components/form'
+import { bindJsonFormatterToTextarea } from '@helpers/format'
 
 const TabConfig: React.FC = () => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
@@ -17,6 +18,18 @@ const TabConfig: React.FC = () => {
 
     setFormConfig(JSON.parse(textareaRef.current.value))
   }, [])
+
+  useEffect(() => {
+    if (textareaRef.current === null) return
+
+    const formatter = bindJsonFormatterToTextarea(textareaRef.current)
+
+    return function cleanup() {
+      if (textareaRef.current === null) return
+
+      formatter.removeListener()
+    }
+  }, [textareaRef])
 
   return (
     <section>
