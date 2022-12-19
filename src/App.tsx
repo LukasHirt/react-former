@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -7,12 +8,19 @@ import { TabConfig, TabResult } from './components/tabs'
 import { FormConfigProvider } from './context/form-config'
 
 const App: React.FC = () => {
+  const [activeTab, setActiveTab] = useState<string>('config')
+
   return (
     <FormConfigProvider>
       <Container className="mt-40" Component="main">
-        <Tabs>
+        <section>
+          <h1>Former</h1>
+          <p>The fastest way to get forms done!</p>
+        </section>
+
+        <Tabs activeTab={activeTab} onSelect={setActiveTab}>
           <Tab name="config" title="Config">
-            <TabConfig />
+            <TabConfig onSave={() => setActiveTab('result')} />
           </Tab>
           <Tab name="result" title="Result">
             <TabResult />

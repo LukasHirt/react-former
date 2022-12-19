@@ -8,7 +8,11 @@ import { FormConfigContext } from '@context/form-config'
 import { Button } from '@components/common'
 import { Textarea } from '@components/form'
 
-const TabConfig: React.FC = () => {
+interface TabConfigProps {
+  onSave: () => void
+}
+
+const TabConfig: React.FC<TabConfigProps> = ({ onSave }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
 
   const { formConfig, isUpdatingConfig, updateFormConfig } = useContext(FormConfigContext)
@@ -20,6 +24,7 @@ const TabConfig: React.FC = () => {
 
     try {
       updateFormConfig(textareaRef.current.value)
+      onSave()
     } catch (error) {
       if (error instanceof Error || (error instanceof TypeError && error.cause)) {
         if (error.cause === 'invalid-json') {

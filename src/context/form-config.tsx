@@ -9,6 +9,7 @@ export interface FormConfigContextInterface {
 
 interface FormConfigContextProvider {
   children: React.ReactNode
+  onSave?: () => void
 }
 
 const defaultValues: FormConfig = { title: '', theme: 'light', items: [], buttons: [] }
