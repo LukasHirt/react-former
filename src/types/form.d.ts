@@ -1,10 +1,11 @@
 export interface FormItem {
   type: 'multi-line' | 'number' | 'string' | 'boolean' | 'enum' | 'date'
+  label: string
 }
 
 export interface FormButton {
   label: string
-  variant: 'primary' | 'secondary' | 'outline'
+  variant: 'primary' | 'secondary'
   type: 'submit' | 'reset' | 'button'
 }
 

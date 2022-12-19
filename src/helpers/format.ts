@@ -69,7 +69,8 @@ export const bindJsonFormatterToTextarea = (textarea: HTMLTextAreaElement & { _l
         return addIndent(before, after, indents + more)
       }
 
-      textarea._lastValue = setValue(before + '\n')
+      textarea._lastValue = setValue(before + '\n' + after)
+      textarea.selectionStart = textarea.selectionEnd = before.length + 1
     } else if (key === '}') {
       e.preventDefault()
 

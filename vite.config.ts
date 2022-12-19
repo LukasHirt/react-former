@@ -9,7 +9,8 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@context': path.resolve(__dirname, './src/context'),
       '@helpers': path.resolve(__dirname, './src/helpers'),
-      '@constants': path.resolve(__dirname, './src/constants')
+      '@constants': path.resolve(__dirname, './src/constants'),
+      '@icons': path.resolve(__dirname, './src/components/icons')
     }
   }
 })

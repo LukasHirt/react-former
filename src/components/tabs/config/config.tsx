@@ -72,7 +72,14 @@ const TabConfig: React.FC<TabConfigProps> = ({ onSave }) => {
   return (
     <section>
       <form onSubmit={handle_submit}>
-        <Textarea ref={textareaRef} className="w-full block" defaultValue={JSON.stringify(formConfig, null, 2)} />
+        <Textarea
+          ref={textareaRef}
+          label="Form JSON"
+          className="w-full block"
+          defaultValue={JSON.stringify(formConfig, null, 2)}
+          rows={40}
+          srOnlyLabel
+        />
         <Button disabled={isUpdatingConfig} type="submit" variant="primary" className="ml-auto mt-4 block">
           Apply
         </Button>

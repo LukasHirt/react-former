@@ -1,0 +1,47 @@
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  cursor: pointer;
+  width: 2.75rem;
+  height: 1.5rem;
+  background-color: var(--bg-dark-mode-switch);
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px;
+  position: relative;
+}
+
+.ball {
+  align-items: center;
+  background-color: var(--bg-app);
+  border-radius: 50%;
+  display: flex;
+  height: 1.25rem;
+  justify-content: center;
+  position: absolute;
+  transition: transform 0.2s linear;
+  width: 1.25rem;
+}
+
+.checkbox:checked + .label .ball {
+  transform: translateX(1.25rem);
+}
+
+.moon,
+.sun {
+  height: 1rem;
+  width: 1rem;
+}
+
+.moon {
+  color: var(--bg-inverted);
+}
+
+.sun {
+  color: var(--btn-bg-color-primary);
+}
