@@ -35,3 +35,6 @@ jobs:
         name: Build
         run: pnpm run build
         
+      - id: tests
+        name: Tests
+        run: pnpm run test

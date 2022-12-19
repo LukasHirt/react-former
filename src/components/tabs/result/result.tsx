@@ -9,7 +9,7 @@ const TabResult: React.FC = () => {
   const theme = formConfig.theme || 'light'
 
   return (
-    <div className={cn([styles.tab, 'theme-' + theme])}>
+    <div data-testid="tab-result" className={cn([styles.tab, 'theme-' + theme])}>
       {formConfig.items?.length > 0 ? (
         <Fragment key="rendered-form">
           {!!formConfig.title && <h1 className={cn(['mb-4', styles.formTitle])}>{formConfig.title}</h1>}
