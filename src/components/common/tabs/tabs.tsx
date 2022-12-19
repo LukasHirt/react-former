@@ -3,7 +3,9 @@ import { Card } from '@components/common'
 import styles from './tabs.module.css'
 
 interface TabsProps {
+  activeTab: string
   children: React.ReactNode
+  onSelect: (tab: string) => void
 }
 
 interface TabLinkProps {
@@ -21,12 +23,9 @@ const TabLink: React.FC<TabLinkProps> = ({ tab, onClick }) => {
   )
 }
 
-const Tabs: React.FC<TabsProps> = ({ children }) => {
-  const [activeTab, setActiveTab] = useState<React.ReactElement | null>(null)
-  const [tabs, setTabs] = useState<React.ReactElement[]>([])
-
-  useMemo(() => {
-    setTabs(
+const Tabs: React.FC<TabsProps> = ({ activeTab, children, onSelect }) => {
+  const tabs = useMemo((): React.ReactElement[] => {
+    return (
       Children.map(children, (child) => {
         const isValid = isValidElement(child)
 
@@ -37,20 +36,20 @@ const Tabs: React.FC<TabsProps> = ({ children }) => {
         return false
       })?.filter(Boolean) || []
     )
-
-    if (tabs.length > 0) {
-      setActiveTab(tabs[0])
-    }
   }, [children])
+
+  const activeTabElement = useMemo((): React.ReactElement | undefined => {
+    return tabs.find((tab) => tab.props.name === activeTab)
+  }, [activeTab, tabs])
 
   return (
     <div>
       <nav className={styles.tabsNav}>
         {tabs.map((tab) => (
-          <TabLink tab={tab} key={tab.props.name} onClick={() => setActiveTab(tab)} />
+          <TabLink tab={tab} key={tab.props.name} onClick={() => onSelect(tab.props.name)} />
         ))}
       </nav>
-      <Card className="rounded-t-none">{activeTab || tabs[0]}</Card>
+      <Card className="rounded-t-none">{activeTabElement || tabs[0]}</Card>
     </div>
   )
 }
