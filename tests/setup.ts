@@ -5,7 +5,7 @@ import { cleanup } from '@testing-library/react'
 expect.extend(matchers)
 
 beforeEach(() => {
-  window.matchMedia = vi.fn()
+  window.matchMedia = vi.fn().mockReturnValue({ matches: false })
 })
 
 afterEach(() => {
