@@ -3,7 +3,9 @@ import { useCallback, useEffect, useState } from 'react'
 import styles from './dark-mode-switch.module.css'
 
 const DarkModeSwitch: React.FC = () => {
-  const [isDarkModeSet, setIsDarkModeSet] = useState<boolean>(!!window.matchMedia('prefers-color-scheme: dark'))
+  const [isDarkModeSet, setIsDarkModeSet] = useState<boolean>(
+    window?.matchMedia('(prefers-color-scheme: dark)').matches || false
+  )
 
   const toggleDarkMode = useCallback(() => {
     setIsDarkModeSet((isSet) => !isSet)
