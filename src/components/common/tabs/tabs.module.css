@@ -13,10 +13,11 @@
 .tabLink {
   background-color: var(--bg-card);
   border: 0;
-  color: var(--btn-bg-color-primary);
+  color: var(--text-color-app);
   cursor: pointer;
   font-size: 1.125rem;
   padding: 0.5rem 1rem;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
 .tabLink.active {
@@ -24,4 +25,9 @@
   color: var(--btn-text-color-primary);
   cursor: initial;
   font-weight: 600;
+}
+
+.tabLink:hover {
+  background-color: var(--btn-bg-color-primary);
+  color: var(--btn-text-color-primary);
 }
