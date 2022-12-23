@@ -1,4 +1,4 @@
-import { Fragment, useContext } from 'react'
+import { useContext } from 'react'
 import cn from 'classnames'
 import { FormConfigContext } from '@context/form-config'
 import { Block, Button } from '@components/common'
@@ -9,9 +9,9 @@ const TabResult: React.FC = () => {
   const theme = formConfig.theme || 'light'
 
   return (
-    <div data-testid="tab-result" className={cn([styles.tab, 'theme-' + theme])}>
+    <>
       {formConfig.items?.length > 0 ? (
-        <Fragment key="rendered-form">
+        <div key="rendered-form" data-testid="tab-result" className={cn([styles.tab, 'theme-' + theme])}>
           {!!formConfig.title && <h1 className={cn(['mb-4', styles.formTitle])}>{formConfig.title}</h1>}
 
           <div className={styles.formFields}>
@@ -29,13 +29,15 @@ const TabResult: React.FC = () => {
               ))}
             </div>
           )}
-        </Fragment>
+        </div>
       ) : (
-        <p key="no-items-msg" className={styles.noItemsMsg}>
-          You have not created any form yet. Please, go back to section &rdquo;Config&rdquo; and create one.
-        </p>
+        <div className={styles.tab}>
+          <p key="no-items-msg" className={styles.noItemsMsg}>
+            You have not created any form yet. Please, go back to section &rdquo;Config&rdquo; and create one.
+          </p>
+        </div>
       )}
-    </div>
+    </>
   )
 }
 
