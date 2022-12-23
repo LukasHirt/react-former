@@ -11,11 +11,27 @@ export const bindJsonFormatterToTextarea = (textarea: HTMLTextAreaElement & { _l
     return (match && match[0].length) || 0
   }
 
-  const addIndent = (before: string, after: string, num: number) => {
+  const addIndent = (
+    before: string,
+    after: string,
+    num: number,
+    shouldAddNewLine = false,
+    shouldAddClosingBracket = false
+  ) => {
     if (!num) return
 
-    textarea._lastValue = setValue(before + '\n' + '\t'.repeat(num) + after)
-    textarea.selectionStart = textarea.selectionEnd = before.length + 2 * num
+    let newValue = before + '\n' + '\t'.repeat(num)
+
+    if (shouldAddNewLine) {
+      newValue += '\n' + '\t'.repeat(Math.max(num - 1, 0))
+    }
+
+    if (shouldAddClosingBracket) {
+      newValue += '}'
+    }
+
+    textarea._lastValue = setValue(newValue + after)
+    textarea.selectionStart = textarea.selectionEnd = before.length + 1 + num
   }
 
   const removeIndent = (before: string, after: string) => {
@@ -48,25 +64,26 @@ export const bindJsonFormatterToTextarea = (textarea: HTMLTextAreaElement & { _l
     const before = value.substring(0, caret)
     const after = value.substring(caret)
     const lastChar = before.trim().slice(-1)
-    const nextChar = after.substring(0, 1)
+    const nextChar = after.at(0)
 
     if (key === 'Enter') {
       e.preventDefault()
 
+      const isNextCharClosing = nextChar === '}'
+
       if (lastChar === '{') {
         const prevLine = getPreviousLine(before)
         const indents = getIndents(prevLine)
-        const more = nextChar === '}' ? 0 : 1
 
-        return addIndent(before, after, indents + more)
+        return addIndent(before, after, indents + 1, true, !isNextCharClosing)
       }
 
       const prevLine = getPreviousLine(before)
       const indents = getIndents(prevLine)
-      const more = nextChar === '}' ? -1 : 0
+      const more = isNextCharClosing ? -1 : 0
 
       if (indents + more > 0) {
-        return addIndent(before, after, indents + more)
+        return addIndent(before, after, indents + more, isNextCharClosing)
       }
 
       textarea._lastValue = setValue(before + '\n' + after)
